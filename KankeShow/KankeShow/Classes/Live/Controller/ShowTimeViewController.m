@@ -15,12 +15,13 @@
 #define TOP_COVER_HEIGHT 60
 #define BOTTOM_COVER_HEIGHT 100
 
-@interface ShowTimeViewController ()
+@interface ShowTimeViewController ()<AVCapturePhotoCaptureDelegate>
 @property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) UIButton *switchCamare;
 @property (nonatomic, strong) UIButton *shotBtn;
 @property (nonatomic, strong) UIView *buttomCoverView;
 @property (nonatomic, strong) UIView *topCoverView;
+@property (nonatomic, strong) UIImageView *photoPreviewView;
 
 //捕获设备
 @property (nonatomic, strong) AVCaptureDevice *captureDevice;
@@ -80,8 +81,14 @@
     [_shotBtn setFrame:CGRectMake(0, 0, 60, 60)];
     [_shotBtn setTitle:@"拍摄" forState:UIControlStateNormal];
     [_shotBtn setBackgroundColor:[UIColor redColor]];
-    [_shotBtn addTarget:self action:@selector(switchTheCamare) forControlEvents:UIControlEventTouchUpInside];
+    [_shotBtn addTarget:self action:@selector(clickPhotoBtn) forControlEvents:UIControlEventTouchUpInside];
     [_buttomCoverView addSubview:_shotBtn];
+    
+    _photoPreviewView = [[UIImageView alloc] init];
+    [_photoPreviewView setFrame:CGRectMake(0, 0, 80, 80)];
+    [_photoPreviewView setBackgroundColor:[UIColor blackColor]];
+    [_buttomCoverView addSubview:_photoPreviewView];
+    
     
     __weak typeof (self) weakSelf = self;
     [_closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,6 +121,13 @@
         make.center.equalTo(weakSelf.buttomCoverView);
         make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
+    
+    [_photoPreviewView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(weakSelf.buttomCoverView);
+        make.left.equalTo(@40);
+        make.height.equalTo(@80);
+        make.width.equalTo(@80);
+    }];
 }
 
 /*
@@ -126,11 +140,64 @@
 }
 
 /*
+ *@brief 拍照
+ */
+- (void)clickPhotoBtn{
+    AVCaptureConnection *connect = [_output connectionWithMediaType:AVMediaTypeVideo];
+    if(!connect){
+        NSLog(@"拍照失败");
+        return;
+    }
+    
+    [_output capturePhotoWithSettings:[AVCapturePhotoSettings photoSettings] delegate:self];
+}
+
+/*
  *@brief 切换摄像头
  */
 - (void)switchTheCamare{
-    
+    NSUInteger cameraCount = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count];
+    if (cameraCount > 1) {
+        NSError *error;
+        //给摄像头的切换添加翻转动画
+        CATransition *animation = [CATransition animation];
+        animation.duration = .5f;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"oglFlip";
+        
+        AVCaptureDevice *newCamera = nil;
+        AVCaptureDeviceInput *newInput = nil;
+        //拿到另外一个摄像头位置
+        AVCaptureDevicePosition position = [[_input device] position];
+        if (position == AVCaptureDevicePositionFront){
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            animation.subtype = kCATransitionFromLeft;//动画翻转方向
+        }
+        else {
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            animation.subtype = kCATransitionFromRight;//动画翻转方向
+        }
+        //生成新的输入
+        newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error:nil];
+        [self.previewLayer addAnimation:animation forKey:nil];
+        if (newInput != nil) {
+            [self.session beginConfiguration];
+            [self.session removeInput:self.input];
+            if ([self.session canAddInput:newInput]) {
+                [self.session addInput:newInput];
+                self.input = newInput;
+                
+            } else {
+                [self.session addInput:self.input];
+            }
+            [self.session commitConfiguration];
+            
+        } else if (error) {
+            NSLog(@"toggle carema failed, error = %@", error);
+        }
+    }
 }
+
 
 #pragma -mark config camare
 /*
@@ -185,6 +252,21 @@
     return nil;
 }
 
+#pragma mark - AVCapturePhotoCaptureDelegate
+-(void)captureOutput:(AVCapturePhotoOutput *)captureOutput didFinishProcessingPhotoSampleBuffer:(CMSampleBufferRef)photoSampleBuffer previewPhotoSampleBuffer:(CMSampleBufferRef)previewPhotoSampleBuffer resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings bracketSettings:(AVCaptureBracketedStillImageSettings *)bracketSettings error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"error : %@", error.localizedDescription);
+    }
+    
+    if (photoSampleBuffer) {
+//        [AVCapturePhoto]
+//        NSData *data = [AVCapturePhoto fileDataRepresentation];
+        NSData *data = [AVCapturePhotoOutput JPEGPhotoDataRepresentationForJPEGSampleBuffer:photoSampleBuffer previewPhotoSampleBuffer:previewPhotoSampleBuffer];
+        UIImage *image = [UIImage imageWithData:data];
+        [_photoPreviewView setImage:image];
+    }
+}
 
 
 
