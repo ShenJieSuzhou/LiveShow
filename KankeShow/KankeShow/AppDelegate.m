@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import <iflyMSC/IFlyFaceSDK.h>
 @interface AppDelegate ()
 
 @end
@@ -18,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //设置log等级，此处log为默认在app沙盒目录下的msc.log文件
+    [IFlySetting setLogFile:LVL_NONE];
+    
+    //输出在console的log开关
+    [IFlySetting showLogcat:YES];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     MainViewController *mainView = [[MainViewController alloc] init];

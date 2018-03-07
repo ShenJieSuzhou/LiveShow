@@ -8,6 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1A1A75985572E3BEED8597C8 /* libPods-KankeShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71DE85A32FFC0932ED4E6C /* libPods-KankeShow.a */; };
+		E514BE532047C91A00F2AE34 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E514BE522047C91A00F2AE34 /* GPUImageBeautifyFilter.m */; };
+		E5836737204FD44E008F625E /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836718204FD44E008F625E /* iflyMSC.framework */; };
+		E5836745204FDE24008F625E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836744204FDE23008F625E /* libc++.tbd */; };
+		E5836747204FDE2D008F625E /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836746204FDE2D008F625E /* libstdc++.tbd */; };
+		E5836749204FDE34008F625E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836748204FDE34008F625E /* SystemConfiguration.framework */; };
+		E583674B204FDE3A008F625E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E583674A204FDE3A008F625E /* MobileCoreServices.framework */; };
+		E583674D204FDE40008F625E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E583674C204FDE40008F625E /* CoreGraphics.framework */; };
+		E583674F204FDE48008F625E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E583674E204FDE48008F625E /* UIKit.framework */; };
+		E5836751204FDED4008F625E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836750204FDED4008F625E /* AddressBook.framework */; };
+		E5836753204FDF02008F625E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836752204FDF01008F625E /* CoreLocation.framework */; };
+		E5836755204FDF15008F625E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836754204FDF15008F625E /* CoreTelephony.framework */; };
+		E5836757204FDF22008F625E /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836756204FDF22008F625E /* Contacts.framework */; };
+		E5836759204FDF28008F625E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836758204FDF28008F625E /* AudioToolbox.framework */; };
+		E583675B204FDF3C008F625E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E583675A204FDF3C008F625E /* AVFoundation.framework */; };
+		E583675F204FEA0D008F625E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E583675E204FEA0D008F625E /* libz.tbd */; };
+		E5836761204FEA27008F625E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836760204FEA27008F625E /* CoreVideo.framework */; };
+		E58367A320500A41008F625E /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = E583678F20500A41008F625E /* CanvasView.m */; };
+		E58367A420500A41008F625E /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679220500A41008F625E /* CaptureManager.m */; };
+		E58367A520500A41008F625E /* CalculatorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679620500A41008F625E /* CalculatorTools.m */; };
+		E58367A620500A41008F625E /* IFlyFaceImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679820500A41008F625E /* IFlyFaceImage.m */; };
+		E58367A720500A41008F625E /* UIImage+compress.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679A20500A41008F625E /* UIImage+compress.m */; };
+		E58367A820500A41008F625E /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679C20500A41008F625E /* UIImage+Extensions.m */; };
+		E58367A920500A41008F625E /* PermissionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = E583679F20500A41008F625E /* PermissionDetector.m */; };
+		E58367AA20500A41008F625E /* IFlyFaceResultKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = E58367A220500A41008F625E /* IFlyFaceResultKeys.m */; };
 		E5A3C1DB2045510A00E1518E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A3C1DA2045510A00E1518E /* AppDelegate.m */; };
 		E5A3C1DE2045510A00E1518E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A3C1DD2045510A00E1518E /* ViewController.m */; };
 		E5A3C1E12045510A00E1518E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5A3C1DF2045510A00E1518E /* Main.storyboard */; };
@@ -27,6 +51,40 @@
 /* Begin PBXFileReference section */
 		30B007B2D00A2AD7408DCC57 /* Pods-KankeShow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KankeShow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KankeShow/Pods-KankeShow.debug.xcconfig"; sourceTree = "<group>"; };
 		662C4DF8F549FC543524B205 /* Pods-KankeShow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KankeShow.release.xcconfig"; path = "Pods/Target Support Files/Pods-KankeShow/Pods-KankeShow.release.xcconfig"; sourceTree = "<group>"; };
+		E514BE512047C91A00F2AE34 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		E514BE522047C91A00F2AE34 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		E5836718204FD44E008F625E /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		E5836744204FDE23008F625E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E5836746204FDE2D008F625E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		E5836748204FDE34008F625E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E583674A204FDE3A008F625E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E583674C204FDE40008F625E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E583674E204FDE48008F625E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E5836750204FDED4008F625E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		E5836752204FDF01008F625E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E5836754204FDF15008F625E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E5836756204FDF22008F625E /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		E5836758204FDF28008F625E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E583675A204FDF3C008F625E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E583675C204FDF48008F625E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E583675E204FEA0D008F625E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E5836760204FEA27008F625E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E583678E20500A41008F625E /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		E583678F20500A41008F625E /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		E583679120500A41008F625E /* CaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
+		E583679220500A41008F625E /* CaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
+		E583679520500A41008F625E /* CalculatorTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorTools.h; sourceTree = "<group>"; };
+		E583679620500A41008F625E /* CalculatorTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorTools.m; sourceTree = "<group>"; };
+		E583679720500A41008F625E /* IFlyFaceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFaceImage.h; sourceTree = "<group>"; };
+		E583679820500A41008F625E /* IFlyFaceImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFlyFaceImage.m; sourceTree = "<group>"; };
+		E583679920500A41008F625E /* UIImage+compress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+compress.h"; sourceTree = "<group>"; };
+		E583679A20500A41008F625E /* UIImage+compress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+compress.m"; sourceTree = "<group>"; };
+		E583679B20500A41008F625E /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
+		E583679C20500A41008F625E /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
+		E583679E20500A41008F625E /* PermissionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionDetector.h; sourceTree = "<group>"; };
+		E583679F20500A41008F625E /* PermissionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionDetector.m; sourceTree = "<group>"; };
+		E58367A120500A41008F625E /* IFlyFaceResultKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFaceResultKeys.h; sourceTree = "<group>"; };
+		E58367A220500A41008F625E /* IFlyFaceResultKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFlyFaceResultKeys.m; sourceTree = "<group>"; };
 		E5A3C1D62045510A00E1518E /* KankeShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KankeShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A3C1D92045510A00E1518E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5A3C1DA2045510A00E1518E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +118,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5836761204FEA27008F625E /* CoreVideo.framework in Frameworks */,
+				E583675F204FEA0D008F625E /* libz.tbd in Frameworks */,
+				E583675B204FDF3C008F625E /* AVFoundation.framework in Frameworks */,
+				E5836759204FDF28008F625E /* AudioToolbox.framework in Frameworks */,
+				E5836757204FDF22008F625E /* Contacts.framework in Frameworks */,
+				E5836755204FDF15008F625E /* CoreTelephony.framework in Frameworks */,
+				E5836753204FDF02008F625E /* CoreLocation.framework in Frameworks */,
+				E5836751204FDED4008F625E /* AddressBook.framework in Frameworks */,
+				E583674F204FDE48008F625E /* UIKit.framework in Frameworks */,
+				E583674D204FDE40008F625E /* CoreGraphics.framework in Frameworks */,
+				E583674B204FDE3A008F625E /* MobileCoreServices.framework in Frameworks */,
+				E5836749204FDE34008F625E /* SystemConfiguration.framework in Frameworks */,
+				E5836747204FDE2D008F625E /* libstdc++.tbd in Frameworks */,
+				E5836745204FDE24008F625E /* libc++.tbd in Frameworks */,
+				E5836737204FD44E008F625E /* iflyMSC.framework in Frameworks */,
 				1A1A75985572E3BEED8597C8 /* libPods-KankeShow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,9 +152,113 @@
 		98CFC5D3B439543C54E16FDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5836760204FEA27008F625E /* CoreVideo.framework */,
+				E583675E204FEA0D008F625E /* libz.tbd */,
+				E583675C204FDF48008F625E /* QuartzCore.framework */,
+				E583675A204FDF3C008F625E /* AVFoundation.framework */,
+				E5836758204FDF28008F625E /* AudioToolbox.framework */,
+				E5836756204FDF22008F625E /* Contacts.framework */,
+				E5836754204FDF15008F625E /* CoreTelephony.framework */,
+				E5836752204FDF01008F625E /* CoreLocation.framework */,
+				E5836750204FDED4008F625E /* AddressBook.framework */,
+				E583674E204FDE48008F625E /* UIKit.framework */,
+				E583674C204FDE40008F625E /* CoreGraphics.framework */,
+				E583674A204FDE3A008F625E /* MobileCoreServices.framework */,
+				E5836748204FDE34008F625E /* SystemConfiguration.framework */,
+				E5836746204FDE2D008F625E /* libstdc++.tbd */,
+				E5836744204FDE23008F625E /* libc++.tbd */,
 				FE71DE85A32FFC0932ED4E6C /* libPods-KankeShow.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E514BE502047C8FF00F2AE34 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				E514BE512047C91A00F2AE34 /* GPUImageBeautifyFilter.h */,
+				E514BE522047C91A00F2AE34 /* GPUImageBeautifyFilter.m */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		E5836716204FD44E008F625E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E5836717204FD44E008F625E /* iflyMSC */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E5836717204FD44E008F625E /* iflyMSC */ = {
+			isa = PBXGroup;
+			children = (
+				E583678C20500A41008F625E /* Tools */,
+				E5836718204FD44E008F625E /* iflyMSC.framework */,
+			);
+			path = iflyMSC;
+			sourceTree = "<group>";
+		};
+		E583678C20500A41008F625E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E583678D20500A41008F625E /* CanvasView */,
+				E583679020500A41008F625E /* Capture */,
+				E583679420500A41008F625E /* Image */,
+				E583679D20500A41008F625E /* Permission */,
+				E58367A020500A41008F625E /* Result */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		E583678D20500A41008F625E /* CanvasView */ = {
+			isa = PBXGroup;
+			children = (
+				E583678E20500A41008F625E /* CanvasView.h */,
+				E583678F20500A41008F625E /* CanvasView.m */,
+			);
+			path = CanvasView;
+			sourceTree = "<group>";
+		};
+		E583679020500A41008F625E /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				E583679120500A41008F625E /* CaptureManager.h */,
+				E583679220500A41008F625E /* CaptureManager.m */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		E583679420500A41008F625E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E583679520500A41008F625E /* CalculatorTools.h */,
+				E583679620500A41008F625E /* CalculatorTools.m */,
+				E583679720500A41008F625E /* IFlyFaceImage.h */,
+				E583679820500A41008F625E /* IFlyFaceImage.m */,
+				E583679920500A41008F625E /* UIImage+compress.h */,
+				E583679A20500A41008F625E /* UIImage+compress.m */,
+				E583679B20500A41008F625E /* UIImage+Extensions.h */,
+				E583679C20500A41008F625E /* UIImage+Extensions.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E583679D20500A41008F625E /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				E583679E20500A41008F625E /* PermissionDetector.h */,
+				E583679F20500A41008F625E /* PermissionDetector.m */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		E58367A020500A41008F625E /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				E58367A120500A41008F625E /* IFlyFaceResultKeys.h */,
+				E58367A220500A41008F625E /* IFlyFaceResultKeys.m */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		E5A3C1CD2045510A00E1518E = {
@@ -123,6 +300,7 @@
 		E5D0AE8E20455235008C362A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E5836716204FD44E008F625E /* Library */,
 				E5D0AEA820455CD9008C362A /* Util */,
 				E5D0AEA3204559BD008C362A /* Live */,
 				E5D0AE9E20455781008C362A /* Profile */,
@@ -188,6 +366,7 @@
 		E5D0AEA3204559BD008C362A /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				E514BE502047C8FF00F2AE34 /* Filters */,
 				E5D0AEA4204559C7008C362A /* Controller */,
 			);
 			path = Live;
@@ -363,11 +542,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D0AEAC20455D02008C362A /* UIDevice+SLExtension.m in Sources */,
+				E58367A520500A41008F625E /* CalculatorTools.m in Sources */,
 				E5D0AEB020455DB1008C362A /* NSObject+ALinHUD.m in Sources */,
+				E58367A320500A41008F625E /* CanvasView.m in Sources */,
+				E58367A620500A41008F625E /* IFlyFaceImage.m in Sources */,
+				E58367AA20500A41008F625E /* IFlyFaceResultKeys.m in Sources */,
+				E58367A720500A41008F625E /* UIImage+compress.m in Sources */,
+				E58367A420500A41008F625E /* CaptureManager.m in Sources */,
 				E5D0AE95204555A1008C362A /* CusNavigationController.m in Sources */,
+				E58367A820500A41008F625E /* UIImage+Extensions.m in Sources */,
 				E5A3C1DE2045510A00E1518E /* ViewController.m in Sources */,
 				E5D0AEA720455A61008C362A /* ShowTimeViewController.m in Sources */,
 				E5A3C1E92045510A00E1518E /* main.m in Sources */,
+				E58367A920500A41008F625E /* PermissionDetector.m in Sources */,
+				E514BE532047C91A00F2AE34 /* GPUImageBeautifyFilter.m in Sources */,
 				E5A3C1DB2045510A00E1518E /* AppDelegate.m in Sources */,
 				E5D0AEA2204558A3008C362A /* MyProfileViewController.m in Sources */,
 				E5D0AE9220455262008C362A /* MainViewController.m in Sources */,
@@ -509,6 +697,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSSN499SLU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KankeShow/Classes/Library/iflyMSC",
+				);
 				INFOPLIST_FILE = KankeShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.KankeShow;
@@ -527,6 +720,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSSN499SLU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KankeShow/Classes/Library/iflyMSC",
+				);
 				INFOPLIST_FILE = KankeShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.KankeShow;
