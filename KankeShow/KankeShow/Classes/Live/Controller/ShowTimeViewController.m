@@ -87,6 +87,13 @@
 
     self.viewCanvas = [[CanvasView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
     self.viewCanvas.backgroundColor = [UIColor clearColor];
+    NSString *str = [NSString stringWithFormat:@"{{%f, %f}, {220, 240}}",(MS_WIDTH-220)/2,(MS_WIDTH-240)/2+15];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:str forKey:@"RECT_KEY"];
+    [dic setObject:@"1" forKey:@"RECT_ORI"];
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    [arr addObject:dic];
+    self.viewCanvas.arrFixed = arr;
     self.viewCanvas.hidden = NO;
     [self.filterView addSubview:self.viewCanvas];
     

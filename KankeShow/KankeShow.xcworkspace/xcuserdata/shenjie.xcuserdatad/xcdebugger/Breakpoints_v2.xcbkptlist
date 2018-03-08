@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KankeShow/Classes/Live/Controller/ShowTimeViewController.m"
-            timestampString = "542189083.900647"
+            filePath = "KankeShow/Classes/Library/iflyMSC/Tools/CanvasView/CanvasView.m"
+            timestampString = "542191301.936792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
-            landmarkName = "-showFaceLandmarksAndFaceRectWithPersonsArray:"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-drawFixedPointWithPoints:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KankeShow/Classes/Library/iflyMSC/Tools/CanvasView/CanvasView.m"
+            timestampString = "542191301.936854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-drawFixedPointWithPoints:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
