@@ -15,6 +15,10 @@
 
 #import <iflyMSC/IFlyFaceSDK.h>
 #import "IFlyFaceImage.h"
+#import "CaptureManager.h"
+#import "IFlyFaceResultKeys.h"
+#import "CanvasView.h"
+#import "CalculatorTools.h"
 
 
 #define MS_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -41,6 +45,7 @@
 
 @property (nonatomic, retain) IFlyFaceDetector *ifly_faceDetector;
 @property (nonatomic, strong) NSArray *faceInfo;    // 人脸信息
+@property (nonatomic, strong) CanvasView *viewCanvas;
 
 @end
 
@@ -71,6 +76,7 @@
     
     //默认是前置摄像头
     _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+    self.videoCamera.delegate = self;
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     self.filterView = [[GPUImageView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
@@ -78,6 +84,12 @@
     [self.view addSubview:self.filterView];
     [self.videoCamera addTarget:self.filterView];
     [self.videoCamera startCameraCapture];
+
+    self.viewCanvas = [[CanvasView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
+    self.viewCanvas.backgroundColor = [UIColor clearColor];
+    self.viewCanvas.hidden = NO;
+    [self.filterView addSubview:self.viewCanvas];
+    
     
     [self.videoCamera removeAllTargets];
     GPUImageBeautifyFilter *beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
@@ -310,15 +322,204 @@
     return faceImage;
 }
 
-#pragma -mark GPUImageVideoCameraDelegate
+#pragma mark - GPUImageVideoCameraDelegate
 //Face Detection
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     //人脸识别
+    IFlyFaceImage *iflyFace = [self faceImageFromSampleBuffer:sampleBuffer];
+    [self onOutputFaceImage:iflyFace];
+    iflyFace = nil;
+}
+
+- (void)onOutputFaceImage:(IFlyFaceImage*)img{
+    NSString *strResult = [_ifly_faceDetector trackFrame:img.data withWidth:img.width height:img.height direction:img.direction];
+    NSLog(@"%@", strResult);
     
+    img.data = nil;
     
-    
+    NSMethodSignature *sig = [self methodSignatureForSelector:@selector(praseTrackResult:OrignImage:)];
+    if (!sig) return;
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(praseTrackResult:OrignImage:)];
+    [invocation setArgument:&strResult atIndex:2];
+    [invocation setArgument:&img atIndex:3];
+    [invocation retainArguments];
+    [invocation performSelectorOnMainThread:@selector(invoke) withObject:nil  waitUntilDone:NO];
+    img = nil;
     
 }
 
+#pragma mark - 开启识别 关闭识别
+- (void)showFaceLandmarksAndFaceRectWithPersonsArray:(NSMutableArray *)arrPersons{
+    if (self.viewCanvas.hidden) {
+        self.viewCanvas.hidden = NO;
+    }
+    self.viewCanvas.arrPersons = arrPersons;
+    [self.viewCanvas setNeedsDisplay] ;
+}
+
+- (void)hideFace{
+    if (!self.viewCanvas.hidden) {
+        self.viewCanvas.hidden = YES ;
+    }
+}
+
+#pragma mark - 脸部识别框 脸部识别部位
+- (NSString *)praseDetect:(NSDictionary *)positionDic OrignImage:(IFlyFaceImage *)faceImg{
+    
+    if(!positionDic){
+        return nil;
+    }
+    
+    BOOL isFrontCamera = _videoCamera.frontFacingCameraPresent;
+    
+    CGFloat width = self.view.frame.size.width;
+    CGFloat widthScaleBy = width / faceImg.height;
+    CGFloat heightScaleBy = width / 0.75 / faceImg.width;
+    
+    CGFloat bottom =[[positionDic objectForKey:KCIFlyFaceResultBottom] floatValue];
+    CGFloat top=[[positionDic objectForKey:KCIFlyFaceResultTop] floatValue];
+    CGFloat left=[[positionDic objectForKey:KCIFlyFaceResultLeft] floatValue];
+    CGFloat right=[[positionDic objectForKey:KCIFlyFaceResultRight] floatValue];
+    
+    float cx = (left + right) / 2;
+    float cy = (top + bottom) / 2;
+    float w = right - left;
+    float h = bottom - top;
+    
+    float ncx = cy;
+    float ncy = cx;
+    
+    CGRect rectFace = CGRectMake(ncx - w / 2, ncy - w / 2, w, h);
+    
+    if (!isFrontCamera) {
+        rectFace = rSwap(rectFace);
+        rectFace = rRotate90(rectFace, faceImg.height, faceImg.width);
+    }
+    
+    rectFace = rScale(rectFace, widthScaleBy, heightScaleBy);
+    
+    return NSStringFromCGRect(rectFace);
+}
+
+-(NSMutableArray*)praseAlign:(NSDictionary* )landmarkDic OrignImage:(IFlyFaceImage*)faceImg{
+    
+    if (!landmarkDic) {
+        return nil;
+    }
+    
+    // 判断摄像头方向
+    BOOL isFrontCamera = (_videoCamera.inputCamera.position == AVCaptureDevicePositionFront);
+    
+    // scale coordinates so they fit in the preview box, which may be scaled
+    CGFloat width = self.view.frame.size.width;
+    CGFloat widthScaleBy = width / faceImg.height;
+    CGFloat heightScaleBy = width / 0.75 / faceImg.width;
+    
+    NSMutableArray *arrStrPoints = [NSMutableArray array];
+    NSEnumerator* keys = [landmarkDic keyEnumerator];
+    for (id key in keys) {
+        id attr = [landmarkDic objectForKey:key];
+        if (attr && [attr isKindOfClass:[NSDictionary class]]) {
+            
+            id attr = [landmarkDic objectForKey:key];
+            CGFloat x = [[attr objectForKey:KCIFlyFaceResultPointX] floatValue];
+            CGFloat y = [[attr objectForKey:KCIFlyFaceResultPointY] floatValue];
+            
+            CGPoint p = CGPointMake(y, x);
+            
+            if (!isFrontCamera) {
+                p = pSwap(p);
+                p = pRotate90(p, faceImg.height, faceImg.width);
+            }
+            
+            p = pScale(p, widthScaleBy, heightScaleBy);
+            
+            //            NSDictionary *dict = @{key : NSStringFromCGPoint(p)};
+            //            [arrStrPoints addObject:dict];
+//            [arrStrPoints setObject:NSStringFromCGPoint(p) forKey:key];
+            //            dict = nil;
+            [arrStrPoints addObject:NSStringFromCGPoint(p)];
+        }
+    }
+    return arrStrPoints;
+}
+
+#pragma mark - 人脸识别
+- (void)praseTrackResult:(NSString *)result OrignImage:(IFlyFaceImage *)faceImg{
+    if(!result){
+        return;
+    }
+    
+    @try {
+        NSError* error;
+        NSData* resultData=[result dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary* faceDic=[NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableContainers error:&error];
+        resultData=nil;
+        if(!faceDic){
+            return;
+        }
+        
+        NSString* faceRet=[faceDic objectForKey:KCIFlyFaceResultRet];
+        NSArray* faceArray=[faceDic objectForKey:KCIFlyFaceResultFace];
+        faceDic=nil;
+        
+        int ret=0;
+        if(faceRet){
+            ret=[faceRet intValue];
+        }
+        //没有检测到人脸或发生错误
+        if (ret || !faceArray || [faceArray count]<1) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideFace];
+            }) ;
+            return;
+        }
+        
+        //检测到人脸
+        NSMutableArray *arrPersons = [NSMutableArray array] ;
+        
+        for(id faceInArr in faceArray){
+            
+            if(faceInArr && [faceInArr isKindOfClass:[NSDictionary class]]){
+                
+                NSDictionary* positionDic=[faceInArr objectForKey:KCIFlyFaceResultPosition];
+                NSString* rectString=[self praseDetect:positionDic OrignImage: faceImg];
+                positionDic=nil;
+                
+                NSDictionary* landmarkDic=[faceInArr objectForKey:KCIFlyFaceResultLandmark];
+                NSMutableArray* strPoints=[self praseAlign:landmarkDic OrignImage:faceImg];
+                landmarkDic=nil;
+                
+                
+                NSMutableDictionary *dicPerson = [NSMutableDictionary dictionary] ;
+                if(rectString){
+                    [dicPerson setObject:rectString forKey:RECT_KEY];
+                }
+                if(strPoints){
+                    [dicPerson setObject:strPoints forKey:POINTS_KEY];
+                }
+                
+                strPoints=nil;
+                
+                [dicPerson setObject:@"0" forKey:RECT_ORI];
+                [arrPersons addObject:dicPerson] ;
+                
+                dicPerson=nil;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showFaceLandmarksAndFaceRectWithPersonsArray:arrPersons];
+                });
+            }
+        }
+        faceArray=nil;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"prase exception:%@",exception.name);
+    }
+    @finally {
+    }
+}
 
 @end
