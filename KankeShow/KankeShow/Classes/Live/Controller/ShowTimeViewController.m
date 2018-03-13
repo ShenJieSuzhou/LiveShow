@@ -112,8 +112,11 @@
     self.viewCanvas.arrFixed = arr;
     self.viewCanvas.hidden = NO;
     [self.filterView addSubview:self.viewCanvas];
-    [self.filterView addSubview:_elementView];
     
+    _elementView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
+    _elementFixedContainerView = [[UIView alloc] initWithFrame:_elementView.bounds];
+    [_elementView addSubview:_elementFixedContainerView];
+    [self.filterView addSubview:_elementView];
     
     [self.videoCamera removeAllTargets];
     GPUImageBeautifyFilter *beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
@@ -162,15 +165,6 @@
     [_shotBtn setBackgroundColor:[UIColor redColor]];
     [_shotBtn addTarget:self action:@selector(clickPhotoBtn) forControlEvents:UIControlEventTouchUpInside];
     [_buttomCoverView addSubview:_shotBtn];
-    
-    _elementView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
-    _elementFixedContainerView = [[UIView alloc] initWithFrame:_elementView.bounds];
-    [_elementView addSubview:_elementFixedContainerView];
-    
-//    _photoPreviewView = [[UIImageView alloc] init];
-//    [_photoPreviewView setFrame:CGRectMake(0, 0, 80, 80)];
-//    [_photoPreviewView setBackgroundColor:[UIColor blackColor]];
-//    [_buttomCoverView addSubview:_photoPreviewView];
     
     __weak typeof (self) weakSelf = self;
     [_closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -336,15 +330,17 @@
 
 - (void)loadScene{
     //local
-    SceneModle* mv_scene = [[SceneModle alloc] init];
-    NSString* zip_path = [[NSBundle mainBundle] pathForResource:@"mv_scene/forest_music.zip" ofType:nil];
-    mv_scene.zip_path_ios = zip_path;
-    [_dataSource addObject:mv_scene];
+//    SceneModle* mv_scene = [[SceneModle alloc] init];
+//    NSString* zip_path = [[NSBundle mainBundle] pathForResource:@"mv_scene/forest_music.zip" ofType:nil];
+//    mv_scene.zip_path_ios = zip_path;
+//    [_dataSource addObject:mv_scene];
     
     SceneModle* mv_scene2 = [[SceneModle alloc] init];
     NSString* zip_path2 = [[NSBundle mainBundle] pathForResource:@"mv_scene/garden.zip" ofType:nil];
     mv_scene2.zip_path_ios = zip_path2;
     [_dataSource addObject:mv_scene2];
+    
+    [self unzipScene:mv_scene2];
 }
 
 - (void)unzipScene:(SceneModle*)scene{
@@ -352,9 +348,10 @@
     NSString* dest_path = [NSString stringWithFormat:@"%@/%@", CachePathForMV, scene_path.lastPathComponent.stringByDeletingPathExtension];
     NSString* info_path = [NSString stringWithFormat:@"%@/info.json", dest_path];
     if ([[NSFileManager defaultManager] fileExistsAtPath:info_path]) {
-//        [self loadScene:scene];
+        [self showSenseView:scene];
         return;
     }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [SSZipArchive unzipFileAtPath:scene_path
                         toDestination:dest_path
@@ -362,7 +359,7 @@
                       }
                     completionHandler:^(NSString* _Nonnull path, BOOL succeeded, NSError* _Nullable error) {
                         if (succeeded) {
-                            
+                            [self showSenseView:scene];
                         } else {
                             NSLog(@"加载出错");
                         }
