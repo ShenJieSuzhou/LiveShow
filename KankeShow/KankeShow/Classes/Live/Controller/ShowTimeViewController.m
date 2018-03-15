@@ -336,7 +336,7 @@
 //    [_dataSource addObject:mv_scene];
     
     SceneModle* mv_scene2 = [[SceneModle alloc] init];
-    NSString* zip_path2 = [[NSBundle mainBundle] pathForResource:@"mv_scene/garden.zip" ofType:nil];
+    NSString* zip_path2 = [[NSBundle mainBundle] pathForResource:@"garden.zip" ofType:nil];
     mv_scene2.zip_path_ios = zip_path2;
     [_dataSource addObject:mv_scene2];
     
@@ -344,7 +344,8 @@
 }
 
 - (void)unzipScene:(SceneModle*)scene{
-    NSString* scene_path = [NSString stringWithFormat:@"%@/%@", CachePathForMV, scene.zip_path_ios.lastPathComponent];
+//    NSString* scene_path = [NSString stringWithFormat:@"%@/%@", CachePathForMV, scene.zip_path_ios.lastPathComponent];
+    NSString *scene_path = scene.zip_path_ios;
     NSString* dest_path = [NSString stringWithFormat:@"%@/%@", CachePathForMV, scene_path.lastPathComponent.stringByDeletingPathExtension];
     NSString* info_path = [NSString stringWithFormat:@"%@/info.json", dest_path];
     if ([[NSFileManager defaultManager] fileExistsAtPath:info_path]) {
@@ -361,7 +362,7 @@
                         if (succeeded) {
                             [self showSenseView:scene];
                         } else {
-                            NSLog(@"加载出错");
+                            NSLog(@"%@ 加载出错", error);
                         }
                     }];
     });
@@ -387,7 +388,7 @@
     }
     
     //鼻子 绿
-    NSDictionary* facedict = self.faceInfos[0];
+    NSDictionary* facedict = [self.faceInfos objectAtIndex:0];
     //                NSString *faceRectStr = [facedict objectForKey:RECT_KEY];
     NSDictionary* facePointDict = [facedict objectForKey:POINTS_KEY];
     
@@ -693,7 +694,7 @@
     return NSStringFromCGRect(rectFace);
 }
 
--(NSMutableArray*)praseAlign:(NSDictionary* )landmarkDic OrignImage:(IFlyFaceImage*)faceImg{
+-(NSMutableDictionary*)praseAlign:(NSDictionary* )landmarkDic OrignImage:(IFlyFaceImage*)faceImg{
     
     if (!landmarkDic) {
         return nil;
@@ -707,7 +708,7 @@
     CGFloat widthScaleBy = width / faceImg.height;
     CGFloat heightScaleBy = width / 0.75 / faceImg.width;
     
-    NSMutableArray *arrStrPoints = [NSMutableArray array];
+    NSMutableDictionary *arrStrPoints = [NSMutableDictionary dictionary];
     NSEnumerator* keys = [landmarkDic keyEnumerator];
     for (id key in keys) {
         id attr = [landmarkDic objectForKey:key];
@@ -730,7 +731,7 @@
             //            [arrStrPoints addObject:dict];
 //            [arrStrPoints setObject:NSStringFromCGPoint(p) forKey:key];
             //            dict = nil;
-            [arrStrPoints addObject:NSStringFromCGPoint(p)];
+            [arrStrPoints setObject:NSStringFromCGPoint(p) forKey:key];
         }
     }
     return arrStrPoints;
@@ -779,7 +780,7 @@
                 positionDic=nil;
                 
                 NSDictionary* landmarkDic=[faceInArr objectForKey:KCIFlyFaceResultLandmark];
-                NSMutableArray* strPoints=[self praseAlign:landmarkDic OrignImage:faceImg];
+                NSMutableDictionary* strPoints=[self praseAlign:landmarkDic OrignImage:faceImg];
                 landmarkDic=nil;
                 
                 

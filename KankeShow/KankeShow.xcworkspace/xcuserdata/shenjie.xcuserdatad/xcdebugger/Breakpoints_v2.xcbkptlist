@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KankeShow/Classes/Library/iflyMSC/Tools/CanvasView/CanvasView.m"
-            timestampString = "542191301.936792"
+            filePath = "KankeShow/Classes/Live/Controller/ShowTimeViewController.m"
+            timestampString = "542787770.9234819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-drawFixedPointWithPoints:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KankeShow/Classes/Library/iflyMSC/Tools/CanvasView/CanvasView.m"
-            timestampString = "542191301.936854"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-drawFixedPointWithPoints:"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-reSetFaceUI"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KankeShow/Classes/Live/Controller/ShowTimeViewController.m"
-            timestampString = "542635147.95631"
+            timestampString = "542787770.9238501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-config"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "-rotateFromDict:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KankeShow/Classes/Live/Controller/ShowTimeViewController.m"
+            timestampString = "542787770.924062"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
+            landmarkName = "-praseTrackResult:OrignImage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

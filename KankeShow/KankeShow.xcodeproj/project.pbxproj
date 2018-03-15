@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A1A75985572E3BEED8597C8 /* libPods-KankeShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71DE85A32FFC0932ED4E6C /* libPods-KankeShow.a */; };
-		E50BA5152057A0EE00958C1A /* forest_music.zip in Resources */ = {isa = PBXBuildFile; fileRef = E50BA34A2057A0ED00958C1A /* forest_music.zip */; };
-		E50BA6312057A0EE00958C1A /* garden.zip in Resources */ = {isa = PBXBuildFile; fileRef = E50BA46C2057A0ED00958C1A /* garden.zip */; };
 		E50BA6322057A0EE00958C1A /* UIImageView+PlayGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = E50BA46F2057A0ED00958C1A /* UIImageView+PlayGIF.m */; };
 		E50BA6332057A0EE00958C1A /* YFGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E50BA4712057A0ED00958C1A /* YFGIFImageView.m */; };
 		E50BA6692057A14800958C1A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = E50BA6352057A14800958C1A /* LICENSE.txt */; };
@@ -40,6 +38,8 @@
 		E50BA6892057A78B00958C1A /* KeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E50BA6882057A78B00958C1A /* KeModel.m */; };
 		E50BA68C2057C0EE00958C1A /* KeMVFaceSticker.m in Sources */ = {isa = PBXBuildFile; fileRef = E50BA68B2057C0EE00958C1A /* KeMVFaceSticker.m */; };
 		E50BA68F2057C58300958C1A /* KeMVSticker.m in Sources */ = {isa = PBXBuildFile; fileRef = E50BA68E2057C58300958C1A /* KeMVSticker.m */; };
+		E50BA695205929D200958C1A /* forest_music.zip in Resources */ = {isa = PBXBuildFile; fileRef = E50BA693205929D200958C1A /* forest_music.zip */; };
+		E50BA696205929D200958C1A /* garden.zip in Resources */ = {isa = PBXBuildFile; fileRef = E50BA694205929D200958C1A /* garden.zip */; };
 		E514BE532047C91A00F2AE34 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E514BE522047C91A00F2AE34 /* GPUImageBeautifyFilter.m */; };
 		E5836737204FD44E008F625E /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836718204FD44E008F625E /* iflyMSC.framework */; };
 		E5836745204FDE24008F625E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5836744204FDE23008F625E /* libc++.tbd */; };
@@ -84,8 +84,6 @@
 /* Begin PBXFileReference section */
 		30B007B2D00A2AD7408DCC57 /* Pods-KankeShow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KankeShow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KankeShow/Pods-KankeShow.debug.xcconfig"; sourceTree = "<group>"; };
 		662C4DF8F549FC543524B205 /* Pods-KankeShow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KankeShow.release.xcconfig"; path = "Pods/Target Support Files/Pods-KankeShow/Pods-KankeShow.release.xcconfig"; sourceTree = "<group>"; };
-		E50BA34A2057A0ED00958C1A /* forest_music.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = forest_music.zip; sourceTree = "<group>"; };
-		E50BA46C2057A0ED00958C1A /* garden.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = garden.zip; sourceTree = "<group>"; };
 		E50BA46E2057A0ED00958C1A /* UIImageView+PlayGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PlayGIF.h"; sourceTree = "<group>"; };
 		E50BA46F2057A0ED00958C1A /* UIImageView+PlayGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PlayGIF.m"; sourceTree = "<group>"; };
 		E50BA4702057A0ED00958C1A /* YFGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFGIFImageView.h; sourceTree = "<group>"; };
@@ -147,6 +145,8 @@
 		E50BA68B2057C0EE00958C1A /* KeMVFaceSticker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeMVFaceSticker.m; sourceTree = "<group>"; };
 		E50BA68D2057C58300958C1A /* KeMVSticker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeMVSticker.h; sourceTree = "<group>"; };
 		E50BA68E2057C58300958C1A /* KeMVSticker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeMVSticker.m; sourceTree = "<group>"; };
+		E50BA693205929D200958C1A /* forest_music.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = forest_music.zip; sourceTree = "<group>"; };
+		E50BA694205929D200958C1A /* garden.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = garden.zip; sourceTree = "<group>"; };
 		E514BE512047C91A00F2AE34 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		E514BE522047C91A00F2AE34 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		E5836718204FD44E008F625E /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
@@ -271,15 +271,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E50BA29F2057A0ED00958C1A /* mv_scene */ = {
-			isa = PBXGroup;
-			children = (
-				E50BA34A2057A0ED00958C1A /* forest_music.zip */,
-				E50BA46C2057A0ED00958C1A /* garden.zip */,
-			);
-			path = mv_scene;
-			sourceTree = "<group>";
-		};
 		E50BA46D2057A0ED00958C1A /* UIImageView-PlayGIF */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +382,15 @@
 				E50BA6842057A5BB00958C1A /* SceneSelectView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E50BA692205929D200958C1A /* mv_scene */ = {
+			isa = PBXGroup;
+			children = (
+				E50BA693205929D200958C1A /* forest_music.zip */,
+				E50BA694205929D200958C1A /* garden.zip */,
+			);
+			path = mv_scene;
 			sourceTree = "<group>";
 		};
 		E514BE502047C8FF00F2AE34 /* Filters */ = {
@@ -634,7 +634,7 @@
 		E5D0AEA820455CD9008C362A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E50BA29F2057A0ED00958C1A /* mv_scene */,
+				E50BA692205929D200958C1A /* mv_scene */,
 				E50BA46D2057A0ED00958C1A /* UIImageView-PlayGIF */,
 				E583689E20576DD5008F625E /* Macro */,
 				E5D0AEAD20455D4B008C362A /* HUD */,
@@ -722,15 +722,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E50BA6312057A0EE00958C1A /* garden.zip in Resources */,
-				E50BA5152057A0EE00958C1A /* forest_music.zip in Resources */,
 				E5A3C1E62045510A00E1518E /* LaunchScreen.storyboard in Resources */,
 				E5D0AE97204555FB008C362A /* Images.xcassets in Resources */,
+				E50BA696205929D200958C1A /* garden.zip in Resources */,
 				E50BA67D2057A14800958C1A /* README.md in Resources */,
 				E5A3C1E32045510A00E1518E /* Assets.xcassets in Resources */,
 				E50BA66A2057A14800958C1A /* README.md in Resources */,
 				E5A3C1E12045510A00E1518E /* Main.storyboard in Resources */,
 				E50BA6692057A14800958C1A /* LICENSE.txt in Resources */,
+				E50BA695205929D200958C1A /* forest_music.zip in Resources */,
 				E50BA67C2057A14800958C1A /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
