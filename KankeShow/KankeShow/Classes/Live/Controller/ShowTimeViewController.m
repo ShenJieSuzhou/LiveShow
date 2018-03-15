@@ -111,12 +111,12 @@
     [arr addObject:dic];
     self.viewCanvas.arrFixed = arr;
     self.viewCanvas.hidden = NO;
-    [self.filterView addSubview:self.viewCanvas];
+//    [self.filterView addSubview:self.viewCanvas];
     
-    _elementView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
-    _elementFixedContainerView = [[UIView alloc] initWithFrame:_elementView.bounds];
-    [_elementView addSubview:_elementFixedContainerView];
-    [self.filterView addSubview:_elementView];
+    _elementFixedContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_COVER_HEIGHT, MS_WIDTH, MS_HEIGHT - BOTTOM_COVER_HEIGHT - TOP_COVER_HEIGHT)];
+//    _elementFixedContainerView = [[UIView alloc] initWithFrame:_elementView.bounds];
+//    [_elementView addSubview:_elementFixedContainerView];
+    [self.filterView addSubview:_elementFixedContainerView];
     
     [self.videoCamera removeAllTargets];
     GPUImageBeautifyFilter *beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
@@ -371,7 +371,7 @@
 
 - (void)reSetFaceUI{
     if (self.faceInfos.count < 1) {
-        //self.eyeImageView.hidden = YES;
+        self.eyeImageView.hidden = YES;
         self.eyeImageView.transform = CGAffineTransformIdentity;
         [self.eyeImageView stopGIF];
         self.eyeImageView.hidden = YES;
